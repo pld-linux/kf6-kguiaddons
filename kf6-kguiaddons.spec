@@ -2,7 +2,7 @@
 # Conditional build:
 %bcond_with	tests		# build with tests
 %define		kdeframever	6.2
-%define		qtver		5.15.2
+%define		qtver		6.5.0
 %define		kfname		kguiaddons
 
 Summary:	Utilities for graphical user interfaces
@@ -15,12 +15,12 @@ Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{v
 # Source0-md5:	795fb1a68d1fa485183744aefd79162d
 URL:		http://www.kde.org/
 BuildRequires:	Qt6Core-devel >= %{qtver}
+BuildRequires:	Qt6DBus-devel >= %{qtver}
 BuildRequires:	Qt6Gui-devel >= %{qtver}
 BuildRequires:	Qt6Test-devel >= %{qtver}
-BuildRequires:	Qt6WaylandClient >= %{qtver}
 BuildRequires:	Qt6WaylandClient-devel >= %{qtver}
 BuildRequires:	cmake >= 3.16
-BuildRequires:	kf5-plasma-wayland-protocols-devel >= 1.7.0
+BuildRequires:	kf5-plasma-wayland-protocols-devel >= 1.10.0
 BuildRequires:	kf6-extra-cmake-modules >= %{version}
 BuildRequires:	libxcb-devel
 BuildRequires:	ninja
@@ -32,6 +32,8 @@ BuildRequires:	wayland-devel >= 1.9
 BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	xorg-proto-kbproto-devel
 BuildRequires:	xz
+Requires:	Qt6Core >= %{qtver}
+Requires:	Qt6DBus >= %{qtver}
 Requires:	Qt6Gui >= %{qtver}
 Requires:	Qt6WaylandClient >= %{qtver}
 Requires:	kf6-dirs
