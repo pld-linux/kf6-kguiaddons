@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeframever	6.6
+%define		kdeframever	6.7
 %define		qtver		6.5.0
 %define		kfname		kguiaddons
 
 Summary:	Utilities for graphical user interfaces
 Name:		kf6-%{kfname}
-Version:	6.6.0
+Version:	6.7.0
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	6f0a64e52143659e71b6a41e19d0bb8f
+# Source0-md5:	3d81636ee00d27a254576c9d1ad78de8
 URL:		http://www.kde.org/
 BuildRequires:	Qt6Core-devel >= %{qtver}
 BuildRequires:	Qt6DBus-devel >= %{qtver}
@@ -95,6 +95,11 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libKF6GuiAddons.so.*.*
 %{_datadir}/qlogging-categories6/kguiaddons.categories
 %attr(755,root,root) %{_bindir}/kde-geo-uri-handler
+%dir %{_libdir}/qt6/qml/org/kde/guiaddons
+%{_libdir}/qt6/qml/org/kde/guiaddons/kde-qmlmodule.version
+%{_libdir}/qt6/qml/org/kde/guiaddons/kguiaddonsqml.qmltypes
+%attr(755,root,root) %{_libdir}/qt6/qml/org/kde/guiaddons/libkguiaddonsqml.so
+%{_libdir}/qt6/qml/org/kde/guiaddons/qmldir
 %{_desktopdir}/google-maps-geo-handler.desktop
 %{_desktopdir}/openstreetmap-geo-handler.desktop
 %{_desktopdir}/qwant-maps-geo-handler.desktop
