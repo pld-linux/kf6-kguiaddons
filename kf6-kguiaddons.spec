@@ -1,11 +1,13 @@
 #
 # Conditional build:
-%bcond_with	tests		# build with tests
+%bcond_with	tests		# test suite
+
 %define		kdeframever	6.7
 %define		qtver		6.5.0
 %define		kfname		kguiaddons
 
 Summary:	Utilities for graphical user interfaces
+Summary(pl.UTF-8):	Narzędzia do graficznych interfejsów użytkownika
 Name:		kf6-%{kfname}
 Version:	6.7.0
 Release:	1
@@ -13,7 +15,7 @@ License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
 # Source0-md5:	3d81636ee00d27a254576c9d1ad78de8
-URL:		http://www.kde.org/
+URL:		https://kde.org/
 BuildRequires:	Qt6Core-devel >= %{qtver}
 BuildRequires:	Qt6DBus-devel >= %{qtver}
 BuildRequires:	Qt6Gui-devel >= %{qtver}
@@ -41,11 +43,14 @@ Requires:	wayland >= 1.9
 #Obsoletes:	kf5-%{kfname} < %{version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		qt6dir		%{_libdir}/qt6
-
 %description
 The KDE GUI addons provide utilities for graphical user interfaces in
 the areas of colors, fonts, text, images, keyboard input.
+
+%description -l pl.UTF-8
+Pakiet dodatków KDE GUI zapewnia narzędzia do graficznych interfejsów
+użytkownika w obszarze kolorów, fontów, tekstu, obrazów i wejścia z
+klawiatury.
 
 %package devel
 Summary:	Header files for %{kfname} development
