@@ -10,7 +10,7 @@ Summary:	Utilities for graphical user interfaces
 Summary(pl.UTF-8):	Narzędzia do graficznych interfejsów użytkownika
 Name:		kf6-%{kfname}
 Version:	6.7.0
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
@@ -22,10 +22,10 @@ BuildRequires:	Qt6Gui-devel >= %{qtver}
 BuildRequires:	Qt6Test-devel >= %{qtver}
 BuildRequires:	Qt6WaylandClient-devel >= %{qtver}
 BuildRequires:	cmake >= 3.16
-BuildRequires:	kf5-plasma-wayland-protocols-devel >= 1.10.0
 BuildRequires:	kf6-extra-cmake-modules >= %{version}
 BuildRequires:	libxcb-devel
 BuildRequires:	ninja
+BuildRequires:	plasma-wayland-protocols-devel >= 1.10.0
 BuildRequires:	pkgconfig
 BuildRequires:	qt6-linguist >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.736
@@ -40,7 +40,9 @@ Requires:	Qt6Gui >= %{qtver}
 Requires:	Qt6WaylandClient >= %{qtver}
 Requires:	kf6-dirs
 Requires:	wayland >= 1.9
-#Obsoletes:	kf5-%{kfname} < %{version}
+# will serve also for parallelly installed kf5-kguiaddons
+Provides:	kf5-kguiaddons-geo-handler = %{version}-%{release}
+Obsoletes:	kf5-kguiaddons-geo-handler < 6
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -59,7 +61,6 @@ Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	Qt6Gui-devel >= %{qtver}
 Requires:	cmake >= 3.16
-#Obsoletes:	kf5-%{kfname}-devel < %{version}
 
 %description devel
 Header files for %{kfname} development.
@@ -82,29 +83,31 @@ Pliki nagłówkowe dla programistów używających %{kfname}.
 %ninja_build -C build test
 %endif
 
-
 %install
 rm -rf $RPM_BUILD_ROOT
+
 %ninja_install -C build
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%post	-p /sbin/ldconfig
+%postun	-p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
 %doc README.md
+%attr(755,root,root) %{_libdir}/libKF6GuiAddons.so.*.*.*
 %ghost %{_libdir}/libKF6GuiAddons.so.6
-%attr(755,root,root) %{_libdir}/libKF6GuiAddons.so.*.*
-%{_datadir}/qlogging-categories6/kguiaddons.categories
-%attr(755,root,root) %{_bindir}/kde-geo-uri-handler
 %dir %{_libdir}/qt6/qml/org/kde/guiaddons
+%attr(755,root,root) %{_libdir}/qt6/qml/org/kde/guiaddons/libkguiaddonsqml.so
 %{_libdir}/qt6/qml/org/kde/guiaddons/kde-qmlmodule.version
 %{_libdir}/qt6/qml/org/kde/guiaddons/kguiaddonsqml.qmltypes
-%attr(755,root,root) %{_libdir}/qt6/qml/org/kde/guiaddons/libkguiaddonsqml.so
 %{_libdir}/qt6/qml/org/kde/guiaddons/qmldir
+%{_datadir}/qlogging-categories6/kguiaddons.categories
+
+# geo-handler (common for kf5 and kf6)
+%attr(755,root,root) %{_bindir}/kde-geo-uri-handler
 %{_desktopdir}/google-maps-geo-handler.desktop
 %{_desktopdir}/openstreetmap-geo-handler.desktop
 %{_desktopdir}/qwant-maps-geo-handler.desktop
@@ -112,7 +115,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
+%{_libdir}/libKF6GuiAddons.so
 %{_includedir}/KF6/KGuiAddons
 %{_libdir}/cmake/KF6GuiAddons
-%{_libdir}/libKF6GuiAddons.so
 %{_pkgconfigdir}/KF6GuiAddons.pc
