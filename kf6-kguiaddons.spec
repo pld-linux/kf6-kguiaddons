@@ -2,19 +2,19 @@
 # Conditional build:
 %bcond_with	tests		# test suite
 
-%define		kdeframever	6.8
+%define		kdeframever	6.9
 %define		qtver		6.5.0
 %define		kfname		kguiaddons
 
 Summary:	Utilities for graphical user interfaces
 Summary(pl.UTF-8):	Narzędzia do graficznych interfejsów użytkownika
 Name:		kf6-%{kfname}
-Version:	6.8.0
+Version:	6.9.0
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	cc862286f3ee47174abfb9c565260921
+# Source0-md5:	61b916ad258f3300b7ac22b74722a465
 URL:		https://kde.org/
 BuildRequires:	Qt6Core-devel >= %{qtver}
 BuildRequires:	Qt6DBus-devel >= %{qtver}
@@ -25,7 +25,7 @@ BuildRequires:	cmake >= 3.16
 BuildRequires:	kf6-extra-cmake-modules >= %{version}
 BuildRequires:	libxcb-devel
 BuildRequires:	ninja
-BuildRequires:	plasma-wayland-protocols-devel >= 1.10.0
+BuildRequires:	plasma-wayland-protocols-devel >= 1.15.0
 BuildRequires:	pkgconfig
 BuildRequires:	qt6-linguist >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.736
