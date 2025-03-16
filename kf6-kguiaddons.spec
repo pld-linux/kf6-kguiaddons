@@ -2,19 +2,19 @@
 # Conditional build:
 %bcond_with	tests		# test suite
 
-%define		kdeframever	6.11
+%define		kdeframever	6.12
 %define		qtver		6.5.0
 %define		kfname		kguiaddons
 
 Summary:	Utilities for graphical user interfaces
 Summary(pl.UTF-8):	Narzędzia do graficznych interfejsów użytkownika
 Name:		kf6-%{kfname}
-Version:	6.11.0
+Version:	6.12.0
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	7679bb9a2a0e817f9660ec775f93dc04
+# Source0-md5:	001af63eb9c978b5e9f2e203e2ecf65c
 URL:		https://kde.org/
 BuildRequires:	Qt6Core-devel >= %{qtver}
 BuildRequires:	Qt6DBus-devel >= %{qtver}
