@@ -25,8 +25,8 @@ BuildRequires:	cmake >= 3.16
 BuildRequires:	kf6-extra-cmake-modules >= %{version}
 BuildRequires:	libxcb-devel
 BuildRequires:	ninja
-BuildRequires:	plasma-wayland-protocols-devel >= 1.15.0
 BuildRequires:	pkgconfig
+BuildRequires:	plasma-wayland-protocols-devel >= 1.15.0
 BuildRequires:	qt6-linguist >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	tar >= 1:1.22
@@ -34,6 +34,7 @@ BuildRequires:	wayland-devel >= 1.9
 BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	xorg-proto-kbproto-devel
 BuildRequires:	xz
+Requires(post,postun):	desktop-file-utils
 Requires:	Qt6Core >= %{qtver}
 Requires:	Qt6DBus >= %{qtver}
 Requires:	Qt6Gui >= %{qtver}
@@ -91,8 +92,13 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post	-p /sbin/ldconfig
-%postun	-p /sbin/ldconfig
+%post
+/sbin/ldconfig
+%update_desktop_database_post
+
+%postun
+/sbin/ldconfig
+%update_desktop_database_postun
 
 %files
 %defattr(644,root,root,755)
