@@ -2,19 +2,19 @@
 # Conditional build:
 %bcond_with	tests		# test suite
 
-%define		kdeframever	6.14
+%define		kdeframever	6.15
 %define		qtver		6.5.0
 %define		kfname		kguiaddons
 
 Summary:	Utilities for graphical user interfaces
 Summary(pl.UTF-8):	Narzędzia do graficznych interfejsów użytkownika
 Name:		kf6-%{kfname}
-Version:	6.14.0
+Version:	6.15.0
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	e00cc2feb8c55d4d864f089c33bf10c1
+# Source0-md5:	d17d59371cb0dd8aaa79f19850c59176
 URL:		https://kde.org/
 BuildRequires:	Qt6Core-devel >= %{qtver}
 BuildRequires:	Qt6DBus-devel >= %{qtver}
@@ -76,6 +76,7 @@ Pliki nagłówkowe dla programistów używających %{kfname}.
 %cmake -B build \
 	-G Ninja \
 	%{!?with_tests:-DBUILD_TESTING=OFF} \
+	-DBUILD_PYTHON_BINDINGS=OFF \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON
 
 %ninja_build -C build
