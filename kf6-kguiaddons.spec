@@ -2,19 +2,19 @@
 # Conditional build:
 %bcond_with	tests		# test suite
 
-%define		kdeframever	6.18
+%define		kdeframever	6.19
 %define		qtver		6.5.0
 %define		kfname		kguiaddons
 
 Summary:	Utilities for graphical user interfaces
 Summary(pl.UTF-8):	Narzędzia do graficznych interfejsów użytkownika
 Name:		kf6-%{kfname}
-Version:	6.18.0
+Version:	6.19.0
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	785bf79e5690bb575d05bc62ba1bf11d
+# Source0-md5:	0ff2052c895371c9999eca831f389e5c
 URL:		https://kde.org/
 BuildRequires:	Qt6Core-devel >= %{qtver}
 BuildRequires:	Qt6DBus-devel >= %{qtver}
@@ -105,10 +105,10 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc README.md
-%attr(755,root,root) %{_libdir}/libKF6GuiAddons.so.*.*.*
+%{_libdir}/libKF6GuiAddons.so.*.*.*
 %ghost %{_libdir}/libKF6GuiAddons.so.6
 %dir %{_libdir}/qt6/qml/org/kde/guiaddons
-%attr(755,root,root) %{_libdir}/qt6/qml/org/kde/guiaddons/libkguiaddonsqml.so
+%{_libdir}/qt6/qml/org/kde/guiaddons/libkguiaddonsqml.so
 %{_libdir}/qt6/qml/org/kde/guiaddons/kde-qmlmodule.version
 %{_libdir}/qt6/qml/org/kde/guiaddons/kguiaddonsqml.qmltypes
 %{_libdir}/qt6/qml/org/kde/guiaddons/qmldir
