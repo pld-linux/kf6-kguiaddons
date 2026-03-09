@@ -9,12 +9,12 @@
 Summary:	Utilities for graphical user interfaces
 Summary(pl.UTF-8):	Narzędzia do graficznych interfejsów użytkownika
 Name:		kf6-%{kfname}
-Version:	6.23.0
+Version:	6.23.1
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	2c1c531fe46ddaca670ce7b17232d1dd
+# Source0-md5:	992519166dbb9370c43704385ea20558
 URL:		https://kde.org/
 BuildRequires:	Qt6Core-devel >= %{qtver}
 BuildRequires:	Qt6DBus-devel >= %{qtver}
@@ -22,7 +22,7 @@ BuildRequires:	Qt6Gui-devel >= %{qtver}
 BuildRequires:	Qt6Test-devel >= %{qtver}
 BuildRequires:	Qt6WaylandClient-devel >= %{qtver}
 BuildRequires:	cmake >= 3.16
-BuildRequires:	kf6-extra-cmake-modules >= %{version}
+BuildRequires:	kf6-extra-cmake-modules >= %{kdeframever}
 BuildRequires:	libxcb-devel
 BuildRequires:	ninja
 BuildRequires:	pkgconfig
