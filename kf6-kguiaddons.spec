@@ -10,7 +10,7 @@ Summary:	Utilities for graphical user interfaces
 Summary(pl.UTF-8):	Narzędzia do graficznych interfejsów użytkownika
 Name:		kf6-%{kfname}
 Version:	6.24.0
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
