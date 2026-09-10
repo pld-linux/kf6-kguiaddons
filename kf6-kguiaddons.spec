@@ -2,19 +2,19 @@
 # Conditional build:
 %bcond_with	tests		# test suite
 
-%define		kdeframever	6.29
+%define		kdeframever	6.30
 %define		qtver		6.5.0
 %define		kfname		kguiaddons
 
 Summary:	Utilities for graphical user interfaces
 Summary(pl.UTF-8):	Narzędzia do graficznych interfejsów użytkownika
 Name:		kf6-%{kfname}
-Version:	6.29.0
-Release:	2
+Version:	6.30.0
+Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	9f1d2a5324752fc1e376f1a44d82e59f
+# Source0-md5:	b0ca8beb087729cc53e8e4f054bf2e96
 URL:		https://kde.org/
 BuildRequires:	Qt6Core-devel >= %{qtver}
 BuildRequires:	Qt6DBus-devel >= %{qtver}
@@ -116,6 +116,7 @@ rm -rf $RPM_BUILD_ROOT
 
 # geo-handler (common for kf5 and kf6)
 %attr(755,root,root) %{_bindir}/kde-geo-uri-handler
+%{_desktopdir}/cartes-geo-handler.desktop
 %{_desktopdir}/google-maps-geo-handler.desktop
 %{_desktopdir}/openstreetmap-geo-handler.desktop
 ##%{_desktopdir}/qwant-maps-geo-handler.desktop
